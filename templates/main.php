@@ -1,20 +1,33 @@
 <div class="content-loop">
-    <?php for ($i=0; $i <18 ; $i++) {
-        ?>
-        <div class="item-loop">
-            <div class="header-item">
-                <div class="circle-image" style="background-image:url('https://thumbs.dreamstime.com/x/background-unusual-modern-material-design-square-form-abstract-illustration-59727263.jpg');"></div>
-                <div class="title-item roboto text-center">
-                    Titulo
-                </div>
+    <?php
+        $url = "http://localhost:3000/json-test";
+        $data = file_get_contents($url);
+        $data = json_decode($data);
+        if($data == null){
+            ?>
+            <div class="title-item roboto text-center">
+                No hay resultados
             </div>
-            <div class="item-internal-content">
-                <div class="internal-image" style="background-image:url('https://thumbs.dreamstime.com/x/background-unusual-modern-material-design-square-form-abstract-illustration-59727263.jpg');"></div>
-                <div class="internal-info roboto text-justify">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            <?php
+        }else{
+            foreach ($data as $nodo) {
+                ?>
+                <div class="item-loop">
+                    <div class="header-item">
+                        <div class="circle-image" style="background-image:url('<?php echo $nodo->image; ?>');"></div>
+                        <div class="title-item roboto text-center">
+                            <?php echo $nodo->title; ?>
+                        </div>
+                    </div>
+                    <div class="item-internal-content">
+                        <div class="internal-image" style="background-image:url('<?php echo $nodo->image; ?>');"></div>
+                        <div class="internal-info roboto text-justify">
+                            <?php echo $nodo->content; ?>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <?php
-    } ?>
+                <?php
+            }
+        }
+    ?>
 </div>

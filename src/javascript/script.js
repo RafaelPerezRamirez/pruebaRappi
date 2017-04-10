@@ -1,8 +1,14 @@
+/**
+ * @var {string} time - interval time
+*/
 var time;
+/**
+ * Show content and items with animation
+ */
 function showInfo(){
     var windowsize = $(window).width();
     if (windowsize > 679) {
-        time = 70;
+        time = 80;
         addClasses(time);
     }else{
         setTimeout(function(){
@@ -17,6 +23,10 @@ function showInfo(){
         })
     }
 }
+/**
+ * Add a class to items with a interval
+ * @param {int} time - interval time
+ */
 function addClasses(time){
     $('.item-loop').each(function(i){
         var row = $(this);
