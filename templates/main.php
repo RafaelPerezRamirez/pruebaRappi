@@ -1,6 +1,7 @@
 <div class="content-loop">
     <?php
-        $url = "http://localhost:3000/json-test";
+        $url = "news_mock.json";
+        //$url ="http://urlexample.com"
         $data = file_get_contents($url);
         $data = json_decode($data);
         if($data == null){
